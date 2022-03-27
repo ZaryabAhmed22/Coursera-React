@@ -19,13 +19,18 @@ export default class Menu extends Component {
     this.state = {
       selectedDish: null,
     };
+    console.log("Menu Component Constuctor invoked"); //--1
   }
 
+  componentDidMount() {
+    console.log("Menu Component componentDidMount invoked"); //--3
+  }
   //--Event handling Function
   onDishSelect(dish) {
     this.setState({ selectedDish: dish });
   }
 
+  //Conditionall rendering
   renderDish(dish) {
     if (dish != null) {
       return (
@@ -57,6 +62,7 @@ export default class Menu extends Component {
         </div>
       );
     });
+    console.log("Menu Component Render is invoked"); //--2
 
     return (
       <div className="container">
