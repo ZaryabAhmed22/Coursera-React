@@ -8,6 +8,7 @@ import {
   CardText,
   CardBody,
 } from "reactstrap";
+import DishDetail from "./DishDetail";
 
 export default class Menu extends Component {
   constructor(props) {
@@ -33,15 +34,7 @@ export default class Menu extends Component {
   //Conditionall rendering
   renderDish(dish) {
     if (dish != null) {
-      return (
-        <Card>
-          <CardImg width={"100%"} src={dish.image} alt={dish.name} />
-          <CardBody>
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>
-          </CardBody>
-        </Card>
-      );
+      return <DishDetail dish={dish} />;
     } else {
       return "";
     }
@@ -67,7 +60,7 @@ export default class Menu extends Component {
     return (
       <div className="container">
         <div className="row">{menu}</div>
-        <div className="row">{this.renderDish(this.state.selectedDish)}</div>
+        <div>{this.renderDish(this.state.selectedDish)}</div>
       </div>
     );
   }
