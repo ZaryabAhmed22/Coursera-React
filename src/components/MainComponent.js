@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Menu from "./Menu";
 import Home from "./Home";
+import Contact from "./Contact";
 
 class Main extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Main extends Component {
             path={"/menu"}
             component={() => <Menu dishes={this.state.dishes} />}
           />
+          <Route exact path="/contact" component={Contact} />
           <Redirect to="/home" />
         </Switch>
 

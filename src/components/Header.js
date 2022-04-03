@@ -38,7 +38,7 @@ export default class Header extends Component {
             <NavbarBrand className={"mr-auto"} href="/">
               <img src="assets/images.logo.png" alt="Ristorante Con Fusion" />
             </NavbarBrand>
-            <Collapse isNavOpen={this.state.isOpen} navbar>
+            <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
                 <NavItem>
                   <NavLink className={"nav-link"} to="/home">
@@ -59,7 +59,7 @@ export default class Header extends Component {
                 </NavItem>
 
                 <NavItem>
-                  <NavLink className={"nav-link"} to="/home">
+                  <NavLink className={"nav-link"} to="/contact">
                     <span className="fa fa-address-card fa-lg">Contact Us</span>
                   </NavLink>
                 </NavItem>
