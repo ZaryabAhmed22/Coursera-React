@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Card, CardImg, CardTitle, CardText, CardBody } from "reactstrap";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  Card,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardBody,
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
 //function for rendering dihs comments
 function RenderCommment({ comments }) {
@@ -47,9 +56,22 @@ function RenderDish(props) {
 export default function DishDetail(props) {
   return (
     <div className="container">
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to="/home">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <Link to="/menu">Menu</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+      </Breadcrumb>
+      <div className="col-12">
+        <h3>{props.dish.name}</h3>
+        <hr />
+      </div>
       <div className="row">
         <RenderDish dish={props.dish} />
-        <RenderCommment comments={props.dish.comments} />
+        <RenderCommment comments={props.comments} />
       </div>
     </div>
   );

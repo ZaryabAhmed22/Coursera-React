@@ -11,6 +11,8 @@ import Header from "./Header";
 import Menu from "./Menu";
 import Home from "./Home";
 import Contact from "./Contact";
+import { comment } from "postcss";
+import About from "./AboutComponent";
 
 class Main extends Component {
   constructor(props) {
@@ -43,6 +45,25 @@ class Main extends Component {
       );
     };
 
+    const AboutUs = () => {
+      return <About leaders={this.state.leaders} />;
+    };
+
+    const DishWithId = ({ match }) => {
+      return (
+        <DishDetail
+          dish={
+            this.state.dishes.filter(
+              (dish) => dish.id === parseInt(match.params.dishId, 10)
+            )[0]
+          }
+          comments={this.state.comments.filter(
+            (comment) => comment.dishId === parseInt(match.params.dishId, 10)
+          )}
+        />
+      );
+    };
+
     return (
       <div>
         <Header />
@@ -53,19 +74,11 @@ class Main extends Component {
             path={"/menu"}
             component={() => <Menu dishes={this.state.dishes} />}
           />
+          <Route path="menu/:dishId" component={DishWithId} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/about" component={AboutUs} />
           <Redirect to="/home" />
         </Switch>
-
-        {this.state.selectedDishId !== null && (
-          <DishDetail
-            dish={
-              this.state.dishes.filter(
-                (dish) => dish.id === this.state.selectedDishId
-              )[0]
-            }
-          />
-        )}
         <Footer />
       </div>
     );
