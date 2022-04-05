@@ -12,6 +12,10 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
+  Form,
+  FormGroup,
+  Input,
+  Label,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
@@ -107,7 +111,30 @@ export default class Header extends Component {
         {/* Modal */}
         <Modal isOpen={this.state.isModalOpen}>
           <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-          <ModalBody></ModalBody>
+          <ModalBody>
+            <Form>
+              <FormGroup>
+                <Label htmlFor="userName">Username</Label>
+                <Input type="text" id="userName" name="userName" />
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="password">password</Label>
+                <Input type="password" id="password" name="password" />
+              </FormGroup>
+
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" id="remember" name="userName" />
+                  Remember me
+                </Label>
+              </FormGroup>
+
+              <Button type="submit" value="sumit" className="mt-2 bg-primary">
+                Login
+              </Button>
+            </Form>
+          </ModalBody>
         </Modal>
       </>
     );
