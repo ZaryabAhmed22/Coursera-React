@@ -8,6 +8,10 @@ import {
   NavItem,
   Jumbotron,
   Col,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
@@ -17,15 +21,27 @@ export default class Header extends Component {
 
     this.state = {
       isNavOpen: false,
+      isModalOpen: false,
     };
 
     //Binding the toggleNav
     this.toggleNav = this.toggleNav.bind(this);
+
+    //Binding the toggleModal
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
+  //Nav toggling
   toggleNav() {
     this.setState({
       isNavOpen: true,
+    });
+  }
+
+  //Modal toggling
+  toggleModal() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
     });
   }
 
@@ -64,6 +80,13 @@ export default class Header extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <Button outlinr onClick={this.toggleModal}>
+                    <span className="fa fa-sign-in fa-lg">Login</span>
+                  </Button>
+                </NavItem>
+              </Nav>
             </Collapse>
           </div>
         </Navbar>
@@ -80,6 +103,12 @@ export default class Header extends Component {
             </div>
           </div>
         </Jumbotron>
+
+        {/* Modal */}
+        <Modal isOpen={this.state.isModalOpen}>
+          <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+          <ModalBody></ModalBody>
+        </Modal>
       </>
     );
   }
